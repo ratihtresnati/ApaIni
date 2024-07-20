@@ -12,9 +12,12 @@ public class NPCSpawner : MonoBehaviour
 
     public bool npcSpawned;
 
+    private DialogManagement dialogManage;
+
     void Start()
     {
         npcMove = FindObjectOfType<NPCMove>();
+        dialogManage = FindObjectOfType<DialogManagement>();
     }
 
     //spawn npc
@@ -34,6 +37,9 @@ public class NPCSpawner : MonoBehaviour
         transform.position = spawnPoint.position; 
         transform.rotation = spawnPoint.rotation;
         npcSpawned = false;
+        
+            npcMove.move = false;
+            dialogManage.dialog = false;
     }
 
     public void RespawnNPC(float delayTime) 

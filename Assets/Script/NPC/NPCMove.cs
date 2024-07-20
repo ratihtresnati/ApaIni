@@ -34,7 +34,8 @@ public class NPCMove : MonoBehaviour
             direction.y = 0f; 
 
             transform.position += direction * moveSpeed * Time.deltaTime;
-            move = false;
+
+            if (targetPoint2.position == transform.position) move = false;
         }
     }
 

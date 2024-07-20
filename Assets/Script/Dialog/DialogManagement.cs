@@ -9,12 +9,15 @@ public class DialogManagement : MonoBehaviour
 
     [SerializeField] private ItemsManagement itemsManage;
     private int itemsLength;
-    [SerializeField] private bool dialog;
+    [SerializeField] public bool dialog;
 
     [SerializeField] private GameObject items;
     [SerializeField] private Image gambarItems;
     [SerializeField] private GameObject container;
     [SerializeField] private GameObject clone;
+
+    private int randomItems;
+    public int  a, b;
 
     private Player1Controller playerController; 
 
@@ -31,35 +34,55 @@ public class DialogManagement : MonoBehaviour
 
     public void StartDialog()
     {
+        
         if (dialog == false)
         {
             container.SetActive(true);
-            gambarItems.sprite = itemsManage.GetRandomImage();
-            //itemsManage.GetRandomItems();
 
             RandomItems();
             
         }
     }
 
+    // void Update()
+    // {
+    //     Debug.Log(a);
+    //     Debug.Log(b);
+    // }
+
+    void RandomItemsPertama()
+    {
+        RandomItems randomImage = itemsManage.GetRandomImage();
+
+        gambarItems.sprite = randomImage.Sprite;
+        b = randomImage.RandomIndex;
+        Debug.Log("haloo"+b +1);
+    }
+
     void RandomItems()
     {
-        int randomItems = Random.Range(0, 3);
+        randomItems = Random.Range(0, 2);
 
         switch (randomItems)
         {
             case 0:
+                RandomItemsPertama();
+                ImageClone();
                 break;
             case 1:
-                clone = Instantiate(items, container.transform);
+                RandomItemsPertama();
+                clone = Instantiate(items.gameObject, container.transform);
                 clones.Add(clone);
+                ImageClone();
                 break;
             case 2:
+                RandomItemsPertama();
                 Clone();
+                //ImageClone();
                 break;
         }
 
-        Debug.Log(randomItems);
+        Debug.Log("berapa bubble" + randomItems);
 
         dialog = true;
     }
@@ -67,14 +90,37 @@ public class DialogManagement : MonoBehaviour
     void Clone()
     {
         for (int i = 0; i < 2; i++)
-            {
-                GameObject clone1 = Instantiate(items, container.transform);
-                clones.Add(clone1);
-            }
+        {
+            GameObject clone = Instantiate(items.gameObject, container.transform);
+            clones.Add(clone);
+        }
+        ImageClone();
     }
+
+    public void ImageClone()
+    {
+        RandomItems randomImage = itemsManage.GetRandomImage();
+
+        foreach (GameObject clone in clones)
+        {
+            Image image = clone.GetComponent<Image>();
+
+            image.sprite = randomImage.Sprite;
+            a = randomImage.RandomIndex;
+            Debug.Log("hry"+ a);
+        }
+    }
+
+    public bool reset = false;
+
 
     public void Reset()
     {
+        if(!reset)
+        {
+            return;
+        }
+        
         foreach (GameObject clone in clones)
         {
             Destroy(clone);
@@ -82,6 +128,21 @@ public class DialogManagement : MonoBehaviour
         
         clones.Clear();
         container.SetActive(false);
-        dialog = false;
+        dialog = true;        
+        reset = false;
+        Debug.Log("reset");
     }
+
+    public void GetIndeexSprie()
+    {
+        
+        int b = itemsManage.GetIndeexSprie();
+        
+        Debug.Log("dialog manager" + b);
+    }
+
+    // public bool sameItems()
+    // {
+        
+    // }
 }

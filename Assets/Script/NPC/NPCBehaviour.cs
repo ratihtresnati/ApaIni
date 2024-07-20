@@ -30,11 +30,16 @@ public class NPCBehaviour : MonoBehaviour
                 SpawnNPC();
                 break;
             case NpcState.Waiting:
-                Debug.Log("npc is waiting!");
+                npcMove.move = true;
+                npcMove.NpcMove();
+                if (npcMove.move == true)
+                {
+                    currentState = NpcState.Exit;
+                }
                 break;
             case NpcState.Exit:
                 ExitNPC();
-                if (Input.GetMouseButtonDown(0) && npcSpawner.npcSpawned == false)
+                if (npcSpawner.npcSpawned == false)
                 {
                     currentState = NpcState.Spawn;
                 }
@@ -47,26 +52,32 @@ public class NPCBehaviour : MonoBehaviour
 
         npcSpawner.SpawnNPC();
         npcMove.NpcMove();
+
+        if (npcCollisionLayer.TriggerLose() && !npcSpawner.npcSpawned)
+            {
+                dialogManage.StartDialog();
+
+                if (dialogManage.reset)
+                {
+                        dialogManage.Reset();
+                        currentState = NpcState.Waiting;
+
+                }
         
-        if (npcCollisionLayer.TriggerLose())
-        {
-            dialogManage.StartDialog();
-            //SpawnDialog();
-        }
+            }
     }
 
     private void ExitNPC()
     {
         Debug.Log("NPC has exited.");
-        npcMove.move = true; 
         npcSpawner.RespawnNPC(2);
     }
 
-    void SpawnDialog()
-    {
-        GameObject container = GameObject.Find("Container");
-        GameObject container1 = GameObject.Find("Popi");
+    // void SpawnDialog()
+    // {
+    //     GameObject container = GameObject.Find("Container");
+    //     GameObject container1 = GameObject.Find("Popi");
 
-        Instantiate(container, container1.transform);
-    }
+    //     Instantiate(container, container1.transform);
+    // }
 }
