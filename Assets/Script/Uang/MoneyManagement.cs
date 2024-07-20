@@ -11,11 +11,14 @@ public class MoneyManagement : MonoBehaviour
 
     private SliderHarga sliderHarga;
 
+    private ItemsManagement itemsManage;
+
     void Start()
     {
         textMoney.text = "Rp " + money.ToString("N0");
 
         sliderHarga = FindObjectOfType<SliderHarga>();
+        itemsManage = FindObjectOfType<ItemsManagement>();
     }
 
     private void UpdateMoney()
@@ -41,6 +44,14 @@ public class MoneyManagement : MonoBehaviour
         Debug.Log("byee");
         money -= 1000;
         UpdateMoney();
+    }
+
+    public int UangBertambah(int items)
+    {
+        int a = itemsManage.HargaItems(items);
+
+        return a;
+        // Bertambah(money);
     }
 
     public int GetMoney()

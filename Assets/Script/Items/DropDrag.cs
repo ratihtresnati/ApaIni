@@ -11,10 +11,11 @@ public class DropDrag : MonoBehaviour
     CapsuleCollider2D  collider2D;
     private string dropTag = "pesan";
 
+    
+
     void awake()
     {
         collider2D = gameObject.GetComponent<CapsuleCollider2D>();
-
     }
 
     void OnMouseDown()
@@ -23,25 +24,44 @@ public class DropDrag : MonoBehaviour
         firstPosition = transform.position;
     }   
 
+    string transformTag;
+
     void OnMouseDrag()
     {
         transform.position = MouseWorldPosition() + offset;
+
+        transformTag = transform.tag;
+
+       // Debug.Log(transformTag);
     }
 
     void OnMouseUp()
     {
-    //  collider2D.enabled = false;
+
+        DialogManagement dm = FindObjectOfType<DialogManagement>();
+        MoneyManagement mn = FindObjectOfType<MoneyManagement>();
+
         var rayOrigin = Camera.main.transform.position;
         var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
         RaycastHit2D hitInfo;
 
-
+        string b = dm.b.ToString();
+        string a = dm.a.ToString();
+        
+        bool checkTransformA = transformTag == a;
+        bool checkTransformB = transformTag == b;
+        
         if (hitInfo = Physics2D.Raycast(rayOrigin, rayDirection))
-        {
-            Debug.Log("Hit something! " + hitInfo.collider.name);
-            if (hitInfo.transform.tag == dropTag)
+         {
+            if (hitInfo.transform.tag == dropTag && (checkTransformA || checkTransformB))
             {
-                Debug.Log("pesan");
+                int c = mn.UangBertambah(checkTransformA ? dm.a : dm.b); 
+                mn.Bertambah(c);
+                // dm.dialog = true;
+                dm.reset = true;
+                // dm.Reset();
+                transform.position = SavePosition();
+                Debug.Log(c + (checkTransformA ? "a" : "b"));
             }
             else
             {
@@ -49,7 +69,6 @@ public class DropDrag : MonoBehaviour
                 transform.position = SavePosition();
             }
         }
-        // collider2D.enabled = true;
     }
 
     Vector3 MouseWorldPosition()
@@ -63,4 +82,17 @@ public class DropDrag : MonoBehaviour
     {
         return firstPosition;
     }
+
+    // bool Check()
+    // {
+        
+    //    DialogManagement dm = GetComponent<DialogManagement>();
+
+    //     if (dm.a.ToString == transformTag)
+    //     {
+    //         true;
+    //     }
+    //     return false;
+
+    // }
 }

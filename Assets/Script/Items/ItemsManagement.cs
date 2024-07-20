@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class ItemsManagement : MonoBehaviour
 {
     public int currentMoney;
@@ -15,6 +16,9 @@ public class ItemsManagement : MonoBehaviour
     private int selectedIndex = 0;
 
     private int itemsLength;
+    private int randomIndex;
+
+    private RandomItems randomItem;
 
     void Update()
     {
@@ -40,43 +44,37 @@ public class ItemsManagement : MonoBehaviour
         return randomItems;
     }
 
-    int GetRandomItems()
+    public int GetIndeexSprie()
     {
-        itemsLength = itemsData.shopItems.Length;
-        int itemsBubble = Random.Range(0, itemsLength);
-
-        return itemsBubble;
+        return randomIndex;
     }
 
-    Sprite GetItemsImage(int a)
+    public RandomItems GetRandomImage()
     {
-        return itemsData.shopItems[a].gambarItems;
+        int randomIndex = Random.Range(0, itemsData.shopItems.Length);
+        Sprite randomImage = itemsData.shopItems[randomIndex].gambarItems;
+
+        randomItem = new RandomItems() { Sprite = randomImage, RandomIndex = randomIndex };
+            
+        return randomItem;
     }
 
-    // public Sprite GetRandomImage(int a)
-    // {
+    public int HargaItems(int items)
+    {
+        return itemsData.shopItems[currentIndex].hargaItems;
+    }
 
-    //     int randomBubble = GetRandomBubble();
+    public void HapusItems()
+    {
+        
+    }
 
-    //     List<Sprite> randomItems = new List<Sprite>();
 
-    //     for (int i = 0; i <= randomBubble; i++)
-    //     {
-    //         randomItems.Add(GetRandomItem());
-    //     }
+}
 
-    //     // for (int i = 0; i <= randomBubble; i++)
-    //     // {
-    //     //     GetRandomItems();
-    //     // }
 
-    // }
-        public Sprite GetRandomImage()
-        {
-            int randomIndex = Random.Range(0, itemsData.shopItems.Length);
-
-            // Return the sprite at the random index
-            return itemsData.shopItems[randomIndex].gambarItems; 
-        }
-    
+public class RandomItems
+{
+        public Sprite Sprite { get; set; }
+        public int RandomIndex { get; set; }
 }
