@@ -61,6 +61,7 @@ public class DropDrag : MonoBehaviour
                 dm.reset = true;
                 // dm.Reset();
                 transform.position = SavePosition();
+                Debug.Log(c);
                 Debug.Log(c + (checkTransformA ? "a" : "b"));
             }
             else

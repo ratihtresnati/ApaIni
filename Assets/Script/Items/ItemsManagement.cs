@@ -7,24 +7,33 @@ using TMPro;
 
 public class ItemsManagement : MonoBehaviour
 {
+
+    private List<GameObject> clones = new List<GameObject>();
+    [SerializeField] private GameObject items;
+
     public int currentMoney;
     public ScriptableItems itemsData;
     public TextMeshProUGUI textNamaItems, textHargaItems ;
     public Image gambar;
     
     private int currentIndex = 0;
-    private int selectedIndex = 0;
+    [SerializeField] private int selectedIndex;
 
     private int itemsLength;
     private int randomIndex;
 
+    private int jumlahItems;
+
     private RandomItems randomItem;
 
-    void Update()
+    void Start()
     {
-        selectedIndex = itemsData.selectedIndex;
-        currentIndex = selectedIndex;
+        ShowItems(selectedIndex);
+        
+    }
 
+    void ShowItems(int currentIndex)
+    {
         if (gambar != null)
         {
             gambar.sprite = itemsData.shopItems[currentIndex].gambarItems;
@@ -33,9 +42,17 @@ public class ItemsManagement : MonoBehaviour
         if (textNamaItems != null && textHargaItems != null )
         {
             textNamaItems.text = itemsData.shopItems[currentIndex].namaItems;
-            textHargaItems.text = itemsData.shopItems[currentIndex].hargaItems.ToString("N0");  
+            textHargaItems.text = itemsData.shopItems[currentIndex].hargaItems.ToString("N0"); 
         }
+
+        jumlahItems = itemsData.shopItems[currentIndex].Quantity;
     }
+
+    private void UpdateHargaItems(int a)
+    {
+        textHargaItems.text = a.ToString("N0");
+    }
+
 
     int GetRandomBubble()
     {
@@ -59,10 +76,44 @@ public class ItemsManagement : MonoBehaviour
         return randomItem;
     }
 
+    //uang di drag
     public int HargaItems(int items)
     {
-        return itemsData.shopItems[currentIndex].hargaItems;
+        return itemsData.shopItems[items].hargaItems;
     }
+
+    // int GetHargaItems()
+    // {
+    //     return itemsData.shopItems[selectedIndex].hargaItems;
+    // }
+
+    //uang tambah di shop
+    // public int GetHargaItems(int currentIndex)
+    // {
+    //     this.currentIndex = currentIndex;
+    //     return itemsData.shopItems[currentIndex].hargaItems;
+    // }
+
+    public void ItemsBerkurang()
+    {
+        
+    }
+
+    public void TambahHarga()
+    {
+        int b = HargaItems(selectedIndex);
+
+        int total = b + b;
+
+        UpdateHargaItems(total);
+        Debug.Log(total);
+
+    }
+
+    // public int HasilTambahan()
+    // {
+    //     return TambahHarga(selectedIndex);
+    // }
 
     public void HapusItems()
     {

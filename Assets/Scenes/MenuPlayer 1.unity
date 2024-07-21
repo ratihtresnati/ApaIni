@@ -800,6 +800,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257979769}
   m_CullTransparentMesh: 1
+--- !u!1 &272636363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4407434877199988166, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
+  m_PrefabInstance: {fileID: 2701939029370585071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &276387802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -891,6 +896,10 @@ PrefabInstance:
     - target: {fileID: 4407434877199988166, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
       propertyPath: m_Name
       value: Items (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788022206299359412, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
+      propertyPath: selectedIndex
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1659,6 +1668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Items (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5788022206299359412, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
+      propertyPath: selectedIndex
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1979,6 +1992,10 @@ PrefabInstance:
     - target: {fileID: 4407434877199988166, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
       propertyPath: m_Name
       value: Items (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788022206299359412, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
+      propertyPath: selectedIndex
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2343,6 +2360,10 @@ PrefabInstance:
     - target: {fileID: 4407434877199988166, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
       propertyPath: m_Name
       value: Items (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788022206299359412, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
+      propertyPath: selectedIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3403,6 +3424,14 @@ PrefabInstance:
     - target: {fileID: 4407434877199988166, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
       propertyPath: m_Name
       value: Items (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788022206299359412, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
+      propertyPath: currentMoney
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788022206299359412, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
+      propertyPath: selectedIndex
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4669,6 +4698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Items
       objectReference: {fileID: 0}
+    - target: {fileID: 5788022206299359412, guid: a22c76986bca48b4d8bb38cf1508d987, type: 3}
+      propertyPath: items
+      value: 
+      objectReference: {fileID: 272636363}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
