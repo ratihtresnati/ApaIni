@@ -44,12 +44,6 @@ public class DialogManagement : MonoBehaviour
         }
     }
 
-    // void Update()
-    // {
-    //     Debug.Log(a);
-    //     Debug.Log(b);
-    // }
-
     void RandomItemsPertama()
     {
         RandomItems randomImage = itemsManage.GetRandomImage();
@@ -140,9 +134,4 @@ public class DialogManagement : MonoBehaviour
         
         Debug.Log("dialog manager" + b);
     }
-
-    // public bool sameItems()
-    // {
-        
-    // }
 }

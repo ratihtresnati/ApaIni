@@ -16,4 +16,5 @@ public class Items
     public string deskripsiItems;
     public int hargaItems;
     public Sprite gambarItems;
+    public int Quantity = 5;
 }
