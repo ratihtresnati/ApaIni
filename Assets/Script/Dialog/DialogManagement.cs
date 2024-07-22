@@ -29,7 +29,10 @@ public class DialogManagement : MonoBehaviour
 
         playerController = FindObjectOfType<Player1Controller>();
 
-        container.transform.position = playerController.getPoint();
+        // if(playerController != null)
+        // {
+            container.transform.position = playerController.getPoint();
+        //}
     }
 
     public void StartDialog()

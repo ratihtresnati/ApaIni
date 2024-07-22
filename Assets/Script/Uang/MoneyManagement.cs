@@ -46,6 +46,19 @@ public class MoneyManagement : MonoBehaviour
         UpdateMoney();
     }
 
+    public void UangBerkurang(int items)
+    {
+        // Debug.Log("byee");
+        // money -= items;
+        // UpdateMoney();
+        int a = itemsManage.HargaItemsBeli(items);
+
+        money -= a;
+        UpdateMoney();
+        Debug.Log("aku auuu");
+
+    }
+
     public int UangBertambah(int items)
     {
         int a = itemsManage.HargaItems(items);
