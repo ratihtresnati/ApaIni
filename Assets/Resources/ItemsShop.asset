@@ -12,28 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61c0a6169f9df14cbeb1dc85247c750, type: 3}
   m_Name: ItemsShop
   m_EditorClassIdentifier: 
+  selectedIndex: 0
   shopItems:
   - namaItems: Tomat
     deskripsiItems: 
     hargaItems: 14000
     gambarItems: {fileID: -1692339322, guid: c56d95dfa883a524d924ffdc46049ea7, type: 3}
-  - namaItems: Bawang Bombay
+    Quantity: 5
+  - namaItems: Bawang Merah
     deskripsiItems: 
     hargaItems: 16000
     gambarItems: {fileID: 1223295848, guid: c56d95dfa883a524d924ffdc46049ea7, type: 3}
+    Quantity: 5
   - namaItems: Kentang
     deskripsiItems: 
     hargaItems: 20000
     gambarItems: {fileID: -1429656130, guid: c56d95dfa883a524d924ffdc46049ea7, type: 3}
+    Quantity: 5
   - namaItems: Bonteng
     deskripsiItems: 
     hargaItems: 14000
     gambarItems: {fileID: -2132426809, guid: c56d95dfa883a524d924ffdc46049ea7, type: 3}
+    Quantity: 5
   - namaItems: Lobak Ungu
     deskripsiItems: 
     hargaItems: 21000
     gambarItems: {fileID: -1006678919, guid: c56d95dfa883a524d924ffdc46049ea7, type: 3}
+    Quantity: 5
   - namaItems: apa y ini
     deskripsiItems: 
     hargaItems: 13000
     gambarItems: {fileID: -712303537, guid: c56d95dfa883a524d924ffdc46049ea7, type: 3}
+    Quantity: 5

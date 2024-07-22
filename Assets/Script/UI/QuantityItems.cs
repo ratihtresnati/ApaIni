@@ -6,20 +6,27 @@ public class QuantityItems : MonoBehaviour
 {
     private ItemsManagement itemsManage;
 
+    private int Quantity;
+
     void Start()
     {
-        itemsManage = FindObjectOfType<ItemsManagement>();
+        itemsManage = gameObject.GetComponent<ItemsManagement>();
     }
 
-    public void Tambah()
+    public void QuantityBerkurang()
     {
-        itemsManage.TambahHarga();
+        //itemsManage.TambahHarga();
         //int a = itemsManage.GetHargaItems();
         //itemsManage.TambahItems1();
         // itemsManage.HargaTambah();
         //int a = itemsManage.HasilTambahan();
-        
-        Debug.Log("fak");
+
+        int a = itemsManage.GetQuantity();
+
+        if(a == 0)
+        {
+            Debug.Log("udh habis");
+        }
     }
     
 }

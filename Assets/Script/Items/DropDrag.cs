@@ -11,8 +11,6 @@ public class DropDrag : MonoBehaviour
     CapsuleCollider2D  collider2D;
     private string dropTag = "pesan";
 
-    
-
     void awake()
     {
         collider2D = gameObject.GetComponent<CapsuleCollider2D>();
@@ -40,6 +38,7 @@ public class DropDrag : MonoBehaviour
 
         DialogManagement dm = FindObjectOfType<DialogManagement>();
         MoneyManagement mn = FindObjectOfType<MoneyManagement>();
+        ItemsManagement im = FindObjectOfType<ItemsManagement>();
 
         var rayOrigin = Camera.main.transform.position;
         var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
@@ -56,12 +55,20 @@ public class DropDrag : MonoBehaviour
             if (hitInfo.transform.tag == dropTag && (checkTransformA || checkTransformB))
             {
                 int c = mn.UangBertambah(checkTransformA ? dm.a : dm.b); 
+
+                // int persen = 75 / 100;
+                // int kali = c * 2;
+                // int total = persen * kali;
                 mn.Bertambah(c);
+                // im.ItemsBerkurang();
+                // int z = im.GetJumlahItems();
+                // Debug.Log(z);
                 // dm.dialog = true;
+                im.QuantityBerkurang();
                 dm.reset = true;
                 // dm.Reset();
                 transform.position = SavePosition();
-                Debug.Log(c);
+                //Debug.Log(total);
                 Debug.Log(c + (checkTransformA ? "a" : "b"));
             }
             else
